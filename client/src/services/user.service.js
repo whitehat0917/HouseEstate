@@ -1,35 +1,20 @@
 import axios from 'axios';
 import authHeader from './auth-header';
+import { config } from '../config.js';
 
-const API_URL = 'http://localhost:5000/api/test/';
+const API_URL = 'http://' + config.serverAddress + '/api/test/';
 
 class UserService {
     getDashboardData() {
         return axios.get(API_URL + 'getDashboardData', { headers: authHeader() });
     }
 
-    getAvailableIpList() {
-        return axios.get(API_URL + 'getAvailableIpList', { headers: authHeader() });
+    getHouses(page) {
+        return axios.post(API_URL + 'getHouses', { page: page }, { headers: authHeader() });
     }
 
-    getProxyHistory() {
-        return axios.get(API_URL + 'getProxyHistory', { headers: authHeader() });
-    }
-
-    getUsedProxy() {
-        return axios.get(API_URL + 'getUsedProxy', { headers: authHeader() });
-    }
-
-    getUsers() {
-        return axios.get(API_URL + 'getUsers', { headers: authHeader() });
-    }
-
-    getUserProxy(userid) {
-        return axios.post(API_URL + 'getUserProxy', { userid: userid }, { headers: authHeader() });
-    }
-
-    getBlacklist() {
-        return axios.get(API_URL + 'getBlacklist', { headers: authHeader() });
+    getHouseLength() {
+        return axios.get(API_URL + 'getHouseLength', { headers: authHeader() });
     }
 }
 

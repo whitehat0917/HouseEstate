@@ -32,7 +32,6 @@ class AddEditForm extends React.Component {
         })
             .then(response => response.json())
             .then(response => {
-                console.log("123-" + this.props.multiIp);
                 if (response.status == "success") {
                     console.log(this.props.multiIp);
                     this.props.addItemToState({ IPID: this.state.IPID, IPADDRESS: this.state.IPADDRESS, SUBNET: this.state.subnet, MUL: this.props.multiIp, FREE_IP: this.props.multiIp })

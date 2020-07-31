@@ -33,6 +33,10 @@ export default class Profile extends Component {
                     <strong>Email:</strong>{" "}
                     {currentUser.email}
                 </p>
+                <p>
+                    <strong>Role:</strong>{" "}
+                    {currentUser.role}
+                </p>
             </div>
         );
     }

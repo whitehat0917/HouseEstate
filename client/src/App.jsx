@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'font-awesome/css/font-awesome.min.css';
 import "./App.css";
 import "./css/pe-icon-7-stroke.css";
+import "./sass/index.scss";
 
 import AuthService from "./services/auth.service";
 
@@ -17,7 +19,8 @@ import UsedProxy from "./components/UsedProxy.component";
 import UserList from "./components/UserList.component";
 import UserProxy from "./components/UserProxy.component";
 import BlackList from "./components/BlackList.component";
-import BoardAdmin from "./components/board-admin.component";
+import Sidebar from "./components/Sidebar.component";
+import PrivateRoute from './components/PrivateRoute';
 
 class App extends Component {
     constructor(props) {
@@ -25,7 +28,7 @@ class App extends Component {
         this.logOut = this.logOut.bind(this);
 
         this.state = {
-            showModeratorBoard: false,
+            showAgentBoard: false,
             showAdminBoard: false,
             currentUser: undefined
         };
@@ -37,6 +40,8 @@ class App extends Component {
         if (user) {
             this.setState({
                 currentUser: user,
+                // showAgentBoard: user.roles.includes("2"),
+                // showAdminBoard: user.roles.includes("1")
             });
         }
     }
@@ -47,11 +52,10 @@ class App extends Component {
 
     render() {
         const { currentUser } = this.state;
-
         return (
             <Router>
                 <div>
-                    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                    {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                         <Navbar.Brand href="/home">HOME</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
@@ -61,13 +65,6 @@ class App extends Component {
                                 <Nav.Link href="/proxyHistory" className="px-3">Proxy History</Nav.Link>
                                 <Nav.Link href="/users" className="px-3">Users</Nav.Link>
                                 <Nav.Link href="/blacklist" className="px-3">Blacklist</Nav.Link>
-                                {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown" className="px-3">
-                                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                                </NavDropdown> */}
                             </Nav>
                             {currentUser ? (
                                 <div>
@@ -85,19 +82,24 @@ class App extends Component {
                                     </div>
                                 )}
                         </Navbar.Collapse>
-                    </Navbar>
-                    <div className="container mt-3">
+                    </Navbar> */}
+                    <div className="menu-container">
+                        {currentUser ? (
+                            <Sidebar />
+                        ) : (<div></div>)}
                         <Switch>
-                            <Route exact path={["/", "/home"]} component={Home} />
+                            <PrivateRoute path="/home/" component={Home} />
+                            {/* <Route exact path="/home" component={Home} /> */}
                             <Route exact path="/login" component={Login} />
                             <Route exact path="/register" component={Register} />
-                            <Route exact path="/profile" component={Profile} />
-                            <Route exact path="/availableIpList" component={AvailableIpList} />
-                            <Route exact path="/proxyHistory" component={ProxyHistory} />
-                            <Route exact path="/usedProxy" component={UsedProxy} />
-                            <Route exact path="/users" component={UserList} />
-                            <Route exact path="/blacklist" component={BlackList} />
-                            <Route exact path="/userProxy/:id" component={UserProxy}></Route>
+                            <PrivateRoute path="/profile" component={Profile} />
+                            <PrivateRoute path="/availableIpList" component={AvailableIpList} />
+                            <PrivateRoute path="/proxyHistory" component={ProxyHistory} />
+                            <PrivateRoute path="/usedProxy" component={UsedProxy} />
+                            <PrivateRoute path="/users" component={UserList} />
+                            <PrivateRoute path="/blacklist" component={BlackList} />
+                            <PrivateRoute path="/userProxy/:id" component={UserProxy} />
+                            <PrivateRoute path="/" component={Home} />
                         </Switch>
                     </div>
                 </div>

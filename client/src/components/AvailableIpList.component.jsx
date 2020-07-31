@@ -4,7 +4,7 @@ import ModalForm from './Modals/AvailableIpModal'
 import MaxModalForm from './Modals/MaxIpModal'
 import DataTable from './Tables/AvailableIpDataTable'
 import UserService from "../services/user.service"
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { setMultiIp } from '../store/actions'
 
 class AvailableIpList extends Component {

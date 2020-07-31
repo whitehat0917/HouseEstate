@@ -1,9 +1,11 @@
 import {
-    SETMULTIIP
+    SETMULTIIP,
+    SETMENU
 } from '../actions/types';
 
 const initialState = {
-    multiIp: false
+    multiIp: false,
+    menuId: 1
 }
 
 const admin = (state = initialState, action) => {
@@ -14,6 +16,14 @@ const admin = (state = initialState, action) => {
                 return {
                     ...state,
                     multiIp: multiIp
+                }
+            }
+        case SETMENU:
+            {
+                const { menuId } = action.payload;
+                return {
+                    ...state,
+                    menuId: menuId
                 }
             }
         default:

@@ -1,4 +1,4 @@
-var AdminModel = require('../models/admin.model');
+var UserModel = require('../models/user.model');
 const config = require("../config/auth.config");
 
 var jwt = require("jsonwebtoken");
@@ -6,18 +6,19 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
     // Save User to Database
-    admin = new AdminModel({
+    user = new UserModel({
         username: req.body.username,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 8)
+        password: bcrypt.hashSync(req.body.password, 8),
+        role: 3
     });
-    admin.save();
+    user.save();
     res.send({ message: "User was registered successfully!" });
 };
 
 exports.signin = (req, res) => {
-    admin = new AdminModel();
-    admin.find('first', { where: "username = '" + req.body.username + "'" }, function(err, row) {
+    user = new UserModel();
+    user.find('first', { where: "username = '" + req.body.username + "'" }, function(err, row) {
         if (row.length == 0) {
             return res.status(404).send({ message: "User Not found." });
         } else {
@@ -38,6 +39,7 @@ exports.signin = (req, res) => {
                 id: row.id,
                 username: row.username,
                 email: row.email,
+                role: row.role,
                 accessToken: token
             });
         }

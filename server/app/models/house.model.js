@@ -8,7 +8,7 @@ const connection = mysqlModel.createConnection({
     database: db.database
 });
 
-var admin = connection.extend({
-    tableName: "admins",
+var house = connection.extend({
+    tableName: "houses",
 });
-module.exports = admin;
+module.exports = house;
