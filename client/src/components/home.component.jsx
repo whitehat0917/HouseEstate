@@ -9,6 +9,7 @@ import "../sass/light-bootstrap-dashboard-react.scss?v=1.3.0";
 import { FiRefreshCw, FiDatabase } from 'react-icons/fi';
 import { FaEuroSign, FaUserAlt, FaClipboardList } from 'react-icons/fa';
 import UserService from "../services/user.service";
+import { setMenu } from '../store/actions';
 
 
 class Home extends Component {
@@ -50,18 +51,18 @@ class Home extends Component {
                 let tempCount = 0;
                 let tempArray = [];
                 let maxPrice = 0;
-                for (let i = 0; i < this.state.months.length; i++) {
-                    if (this.state.months[i] == response.data.data.price_list[tempCount].month) {
-                        if (parseInt(response.data.data.price_list[tempCount].amount) > parseInt(maxPrice))
-                            maxPrice = response.data.data.price_list[tempCount].amount;
-                        tempArray.push(parseFloat(response.data.data.price_list[tempCount].amount));
-                        tempCount++;
-                        if (tempCount >= response.data.data.price_list.length)
-                            break;
-                    } else {
-                        tempArray.push(0);
-                    }
-                }
+                // for (let i = 0; i < this.state.months.length; i++) {
+                //     if (this.state.months[i] == response.data.data.price_list[tempCount].month) {
+                //         if (parseInt(response.data.data.price_list[tempCount].amount) > parseInt(maxPrice))
+                //             maxPrice = response.data.data.price_list[tempCount].amount;
+                //         tempArray.push(parseFloat(response.data.data.price_list[tempCount].amount));
+                //         tempCount++;
+                //         if (tempCount >= response.data.data.price_list.length)
+                //             break;
+                //     } else {
+                //         tempArray.push(0);
+                //     }
+                // }
                 this.setState({ prices: tempArray, maxPrice: maxPrice });
             },
             error => {
@@ -128,8 +129,8 @@ class Home extends Component {
             ]
         ];
         return (
-            <div className="container">
-                <header className="jumbotron py-0">
+            <div className="component-container">
+                <div className="container">
                     <Row>
                         <Col lg={3} sm={6}>
                             <StatsCard
@@ -187,7 +188,7 @@ class Home extends Component {
                             />
                         </Col>
                     </Row>
-                </header>
+                </div>
             </div>
         );
     }

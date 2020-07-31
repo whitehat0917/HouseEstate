@@ -1,3 +1,4 @@
 module.exports = {
-    secret: "proxybot-secret-key"
+    secret: "proxybot-secret-key",
+    roles: ["user", "admin", "agent"]
 };

@@ -3,7 +3,7 @@ const db = {
     user: 'root',
     // password: 'elomakaba',
     password: '',
-    database: 'proxybot_db'
+    database: 'houseagent_db'
 };
 
 module.exports = db;
