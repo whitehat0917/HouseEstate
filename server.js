@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
@@ -19,13 +20,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to application." });
-});
+// app.get("/", (req, res) => {
+//     res.json({ message: "Welcome to application." });
+// });
 
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
+
+app.use(express.static(path.join(__dirname, './build')));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, './build/index.html'));
+});
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8000;

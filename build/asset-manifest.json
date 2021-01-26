@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6205ff90.chunk.css",
+    "main.js": "/static/js/main.bb67b5a8.chunk.js",
+    "main.js.map": "/static/js/main.bb67b5a8.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
+    "static/css/2.ddfacf9b.chunk.css": "/static/css/2.ddfacf9b.chunk.css",
+    "static/js/2.24279c35.chunk.js": "/static/js/2.24279c35.chunk.js",
+    "static/js/2.24279c35.chunk.js.map": "/static/js/2.24279c35.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.b8d70c41d076facdf18bd1a8b31a0b3b.js": "/precache-manifest.b8d70c41d076facdf18bd1a8b31a0b3b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.ddfacf9b.chunk.css.map": "/static/css/2.ddfacf9b.chunk.css.map",
+    "static/css/main.6205ff90.chunk.css.map": "/static/css/main.6205ff90.chunk.css.map",
+    "static/js/2.24279c35.chunk.js.LICENSE.txt": "/static/js/2.24279c35.chunk.js.LICENSE.txt",
+    "static/media/pe-icon-7-stroke.css": "/static/media/SF-Pro-Display-Regular.aaeac71d.otf",
+    "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/sign_in.png": "/static/media/sign_in.5353c6fd.png",
+    "static/media/sign_up.png": "/static/media/sign_up.eb73be8c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09b85ec0.js",
+    "static/css/2.ddfacf9b.chunk.css",
+    "static/js/2.24279c35.chunk.js",
+    "static/css/main.6205ff90.chunk.css",
+    "static/js/main.bb67b5a8.chunk.js"
+  ]
+}
